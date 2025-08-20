@@ -61,8 +61,8 @@ void receive_thread(void *pvParameters) {
 
     memset(&sa, 0, sizeof(struct sockaddr_in));
 
-    tcpip_adapter_ip_info_t ip;
-    tcpip_adapter_get_ip_info(TCPIP_ADAPTER_IF_STA, &ip);
+    esp_netif_ip_info_t ip;
+    esp_netif_get_ip_info(esp_netif_get_default_netif(), &ip);
     ra.sin_family = AF_INET;
     ra.sin_addr.s_addr = ip.ip.addr;
     ra.sin_port = htons(53);
